@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Editor — Portfolio</title>
+  <meta name="description" content="Versatile video editor. Commercial content, social media formats, and audio-driven storytelling. Available for Australian clients.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #0B0B0B;
+      --text:       #EDE9E3;
+      --muted:      #6B6460;
+      --accent:     #C4945A;
+      --line:       #1E1C1A;
+      --tag-bg:     #131210;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-cta:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    header {
+      padding: 5rem 3rem 7rem;
+      max-width: 760px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-sub {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 540px;
+    }
+
+    /* ── DIVIDER ── */
+    .work-label {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 3rem;
+      margin-bottom: 5rem;
+    }
+
+    .work-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .work-label-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── VIDEO BLOCK ── */
+    .video-block {
+      margin-bottom: 8rem;
+    }
+
+    /* landscape 16:9 */
+    .embed-land {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+    .embed-land iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+
+    /* vertical 9:16 – centered */
+    .embed-vert-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 0 3rem;
+    }
+    .embed-vert {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 9 / 16;
+    }
+    .embed-vert iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+
+    /* meta row */
+    .video-meta {
+      padding: 2rem 3rem 0;
+      max-width: 900px;
+    }
+
+    .video-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: var(--tag-bg);
+      padding: 0.2rem 0.55rem;
+      white-space: nowrap;
+    }
+
+    .video-desc {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 560px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 6rem 3rem 4rem;
+      margin-top: 3rem;
+    }
+
+    .footer-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: fit-content;
+      transition: color 0.2s;
+    }
+
+    .footer-link-rule {
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: var(--muted);
+      transition: width 0.3s ease, background 0.2s;
+    }
+
+    .footer-link:hover { color: var(--text); }
+    .footer-link:hover .footer-link-rule {
+      width: 38px;
+      background: var(--accent);
+    }
+
+    .footer-bottom {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2E2B28;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav            { padding: 1.5rem; }
+      header         { padding: 3rem 1.5rem 5rem; }
+      .work-label    { padding: 0 1.5rem; }
+      .video-meta    { padding: 1.5rem 1.5rem 0; }
+      .embed-vert-wrap { padding: 0 1.5rem; }
+      footer         { padding: 4rem 1.5rem 3rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .footer-link-rule { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <!-- ЗАМЕНИ: впиши своё имя или псевдоним -->
+  <a href="#" class="nav-name">Your Name</a>
+  <!-- ЗАМЕНИ: поставь свою почту -->
+  <a href="mailto:your@email.com" class="nav-cta">Available for work</a>
+</nav>
+
+<header>
+  <h1 class="hero-title">Video editor.<br>Built for commercial work.</h1>
+  <p class="hero-sub">Versatile video editor with a focus on commercial content, social media formats, and audio-driven storytelling. Based remotely, available for Australian clients.</p>
+</header>
+
+<main>
+  <div class="work-label">
+    <div class="work-label-line"></div>
+    <span class="work-label-text">Selected Work</span>
+    <div class="work-label-line"></div>
+  </div>
+
+  <!-- 01 — Color Grade -->
+  <div class="video-block">
+    <div class="embed-land">
+      <iframe
+        src="https://www.youtube.com/embed/D6lJXg_CJNw?rel=0&modestbranding=1&color=white"
+        title="Color Grade — Before / After"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+    <div class="video-meta">
+      <h2 class="video-title">Color Grade — Before / After</h2>
+      <div class="tags">
+        <span class="tag">Color Grading</span>
+        <span class="tag">LUT Design</span>
+        <span class="tag">Color Theory</span>
+      </div>
+      <p class="video-desc">Raw footage transformed. Two grades, two moods — same clip, entirely different story. A demonstration of intentional color work across warm lifestyle and cool editorial palettes.</p>
+    </div>
+  </div>
+
+  <!-- 02 — Podcast → Vertical (Shorts) -->
+  <div class="video-block">
+    <div class="embed-vert-wrap">
+      <div class="embed-vert">
+        <iframe
+          src="https://www.youtube.com/embed/BDSFJIT68go?rel=0&modestbranding=1&color=white"
+          title="Podcast → Vertical"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+    <div class="video-meta">
+      <h2 class="video-title">Podcast → Vertical</h2>
+      <div class="tags">
+        <span class="tag">Content Repurposing</span>
+        <span class="tag">Social Media Editing</span>
+        <span class="tag">Subtitle Design</span>
+      </div>
+      <p class="video-desc">Long-form to short-form. A YouTube podcast episode reformatted for vertical platforms — reframed, captioned, and optimised for retention without losing the original message.</p>
+    </div>
+  </div>
+
+  <!-- 03 — Gym / Fitness -->
+  <div class="video-block">
+    <div class="embed-land">
+      <iframe
+        src="https://www.youtube.com/embed/eainrSAkMqw?rel=0&modestbranding=1&color=white"
+        title="Gym / Fitness"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+    <div class="video-meta">
+      <h2 class="video-title">Gym / Fitness</h2>
+      <div class="tags">
+        <span class="tag">High-Energy Editing</span>
+        <span class="tag">Beat Sync</span>
+        <span class="tag">Sound Design</span>
+      </div>
+      <p class="video-desc">Every cut hits on the beat. A gym commercial built around rhythm — where sound design and music work as one to drive the pace forward.</p>
+    </div>
+  </div>
+
+  <!-- 04 — Real Estate Showreel -->
+  <div class="video-block">
+    <div class="embed-land">
+      <iframe
+        src="https://www.youtube.com/embed/Jc0m71OWukI?rel=0&modestbranding=1&color=white"
+        title="Real Estate Showreel"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+    <div class="video-meta">
+      <h2 class="video-title">Real Estate Showreel</h2>
+      <div class="tags">
+        <span class="tag">Property Video</span>
+        <span class="tag">Brand Filmmaking</span>
+        <span class="tag">Aerial Editing</span>
+      </div>
+      <p class="video-desc">Luxury property, clean pace. A showreel for a real estate agency — edited to let the architecture breathe while keeping the viewer engaged.</p>
+    </div>
+  </div>
+
+  <!-- 05 — Pickleball Sound Design -->
+  <div class="video-block">
+    <div class="embed-land">
+      <iframe
+        src="https://www.youtube.com/embed/1jUrbUfrMxY?rel=0&modestbranding=1&color=white"
+        title="Pickleball — Sound Design"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+    <div class="video-meta">
+      <h2 class="video-title">Pickleball — Sound Design</h2>
+      <div class="tags">
+        <span class="tag">Sound Design</span>
+        <span class="tag">Audio Post-Production</span>
+        <span class="tag">Rhythmic Editing</span>
+      </div>
+      <p class="video-desc">No music. Just the game. Every ball flight, every racket strike, every court echo — placed with intention. Proof that rhythm doesn't need a track.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p class="footer-heading">Let's work<br>together.</p>
+  <div class="footer-links">
+    <!-- ЗАМЕНИ: поставь свою почту -->
+    <a href="mailto:your@email.com" class="footer-link">
+      <span class="footer-link-rule"></span>
+      your@email.com
+    </a>
+    <!-- ЗАМЕНИ: поставь свой инстаграм-хэндл -->
+    <a href="https://instagram.com/yourhandle" class="footer-link" target="_blank" rel="noopener">
+      <span class="footer-link-rule"></span>
+      @yourhandle
+    </a>
+  </div>
+  <p class="footer-bottom">Available for remote work &nbsp;·&nbsp; Australian clients welcome &nbsp;·&nbsp; © 2025</p>
+</footer>
+
+</body>
+</html>
